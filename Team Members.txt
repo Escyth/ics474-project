@@ -1,3 +1,7 @@
+Title: Clickstream events pipeline
+
 Usama Bakkar (202263960)
 Naif Alenazi (202163490)
 Anas Alhanaya (201967330)
+
+GitHub: https://github.com/escyth/ics474-project
