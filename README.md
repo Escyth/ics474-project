@@ -4,7 +4,7 @@
 - Naif Alenazi (202163490)
 - Anas Alhanaya (201967330)
 
-**Demo:** < INSERT LINK HERE >
+**Demo:** [https://youtu.be/NNYwcJz9YnM](https://youtu.be/NNYwcJz9YnM)
 
 Access the original repository [here](https://github.com/abeltavares/real-time-data-pipeline).
 
