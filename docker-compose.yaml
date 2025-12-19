@@ -244,6 +244,16 @@ services:
       ports:
         - 8088:8088
 
+  ml:
+    build:
+      context: ./ml
+    container_name: ml-job
+    depends_on:
+      - trino
+    networks:
+      - iceberg_net
+
+
 networks:
   iceberg_net:
     driver: bridge

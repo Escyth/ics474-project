@@ -59,6 +59,19 @@ The component that is concerned with visualization in this pipeline is Superset.
 
 You may refer to Appendix C for a complete step-by-step guide with images and example dashboard.
 
+## ⭐ Machine Learning (Bonus)
+The original project did not include a machine learning component and instead listed it as a potential future enhancement. To demonstrate the application of machine learning concepts covered in the course, we extended the pipeline with a simple predictive model.
+
+A linear regression model was implemented to predict short-term revenue trends based on historical `purchase_amount` data. The machine learning logic is implemented in Python and located in the `ml` directory, which includes the model training script, container setup, and a cron-based scheduler that executes the prediction job periodically (every one minute in the current configuration). The generated predictions are written back to the data lake and can be visualized in Superset.
+
+To support this extension, the following Iceberg table was added:
+```sql
+CREATE TABLE IF NOT EXISTS iceberg.db.revenue_predictions (
+  ts TIMESTAMP,
+  predicted_revenue DOUBLE
+);
+```
+
 ## Challenges & Fixes
 Although the original repository had a solid, ready pipeline, we faced a few challenges:
 1. **Windows volume path fixes:** The repository used `${PWD}` in its configuration which would not resolve properly on our Windows machine, so we had to replace all instances of `${PWD}` with `./` to refer to the current directory.
@@ -81,7 +94,7 @@ Structure:
 {
   "event_id": fake.uuid4(),
   "user_id": fake.uuid4(),
-  "event_type": fake.random_element(elements=("page_view",        "add_to_cart", "purchase", "logout")),
+  "event_type": fake.random_element(elements=("page_view", "add_to_cart", "purchase", "logout")),
   "url": fake.uri_path(),
   "session_id": fake.uuid4(),
   "device": fake.random_element(elements=("mobile", "desktop", "tablet")),
